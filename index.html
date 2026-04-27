@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeVerse | Trei Universuri Unice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Syne:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-purple: #9d00ff;
+            --neon-pink: #ff00bd;
+            --gold: #ffcc00;
+            --bg-dark: #05050a;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .font-cyber { font-family: 'Orbitron', sans-serif; }
+        .font-header { font-family: 'Syne', sans-serif; }
+
+        /* Custom Gradients & Shadows */
+        .bg-cyber-gradient {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+        }
+
+        .text-glow-blue { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
+        .text-glow-gold { text-shadow: 0 0 8px var(--gold); }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section Styling */
+        .hero-banner {
+            height: 90vh;
+            background: linear-gradient(rgba(5, 5, 10, 0.4), rgba(5, 5, 10, 1)), 
+                        url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1600'); /* Placeholder pentru vibe-ul mixt de oraș nocturn */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Cards and Hover Effects */
+        .anime-card {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid transparent;
+        }
+
+        .anime-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-bottom-color: var(--neon-blue);
+            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.15);
+        }
+
+        .anime-card img {
+            transition: transform 0.7s ease;
+        }
+
+        .anime-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Gallery Masonry */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 250px;
+            gap: 15px;
+        }
+
+        .gallery-item:nth-child(2n) { grid-row: span 2; }
+        .gallery-item:nth-child(3n) { grid-column: span 1; }
+
+        .gold-border { border: 1px solid var(--gold); }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--neon-blue);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after { width: 100%; }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigație -->
+    <nav class="fixed top-0 w-full z-50 glass py-4 px-8 flex justify-between items-center border-b border-white/10">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-gradient-to-tr from-blue-500 to-purple-600 rotate-45 border-2 border-white"></div>
+            <span class="font-cyber text-2xl font-bold tracking-widest text-white">ANIME<span class="text-blue-400">VERSE</span></span>
+        </div>
+        <ul class="hidden lg:flex gap-10 font-cyber text-xs tracking-tighter uppercase">
+            <li><a href="#home" class="nav-link hover:text-blue-400">Home</a></li>
+            <li><a href="#animeuri" class="nav-link hover:text-blue-400">Animeuri</a></li>
+            <li><a href="#autori" class="nav-link hover:text-blue-400">Autori</a></li>
+            <li><a href="#galerie" class="nav-link hover:text-blue-400">Galerie</a></li>
+            <li><a href="#contact" class="nav-link hover:text-blue-400">Contact</a></li>
+        </ul>
+        <button class="px-5 py-2 border border-gold text-gold font-cyber text-[10px] uppercase tracking-widest hover:bg-gold hover:text-black transition">Membru VIP</button>
+    </nav>
+
+    <!-- SECȚIUNEA 1: HERO -->
+    <section id="home" class="hero-banner relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+        <div class="text-center z-10 px-4">
+            <h2 class="font-cyber text-blue-400 text-sm tracking-[0.5em] mb-4 uppercase">Explorând Universul Vizual</h2>
+            <h1 class="font-header text-6xl md:text-9xl font-extrabold text-white mb-6 leading-tight">
+                EXPLOREAZĂ<br><span class="text-glow-blue">LUMEA ANIME</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-gray-400 font-light text-lg mb-10 tracking-wide">
+                Trei universuri, trei stiluri unice: de la haosul supranatural al <span class="text-pink-500 font-bold">Dan Da Dan</span>, 
+                la melancolia nocturnă din <span class="text-blue-400 font-bold">Call of the Night</span> și magia atemporală <span class="text-gold font-bold">Spirited Away</span>.
+            </p>
+            <a href="#animeuri" class="inline-block px-12 py-4 bg-white text-black font-cyber font-bold text-xs uppercase tracking-widest hover:bg-blue-400 hover:text-white transition-all transform hover:scale-105">
+                Descoperă mai mult
+            </a>
+        </div>
+        
+        <!-- Element decorativ floating -->
+        <div class="hidden lg:block absolute bottom-10 right-20 w-32 h-32 border border-blue-500/30 rounded-full floating"></div>
+        <div class="hidden lg:block absolute top-40 left-20 w-16 h-16 border border-pink-500/30 rotate-45 floating" style="animation-delay: -2s"></div>
+    </section>
+
+    <!-- SECȚIUNEA 2: ANIMEURI -->
+    <section id="animeuri" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+            <div>
+                <h3 class="text-gold font-cyber text-sm tracking-widest mb-2 uppercase">Selecție Curatoriată</h3>
+                <h2 class="font-header text-5xl font-bold">Capodopere Vizuale</h2>
+            </div>
+            <p class="text-gray-500 max-w-md text-right">O analiză a stilului și atmosferei celor mai captivante producții contemporane și clasice.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Dan Da Dan -->
+            <div class="anime-card glass rounded-tr-[50px] rounded-bl-[50px]">
+                <div class="relative h-[450px]">
+                    <img src="https://m.media-amazon.com/images/M/MV5BM2U4MmI2ZTQtZTIzZC00ZTI5LTlkNGUtYzU1Mzk1Mzc4NzlkXkEyXkFqcGc@._V1_.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0" alt="Dan Da Dan vibe">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <span class="bg-pink-600 text-white text-[10px] px-3 py-1 font-cyber uppercase mb-2 inline-block">Supranatural</span>
+                        <h4 class="text-3xl font-header font-bold text-white">Dan Da Dan</h4>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        Un amalgam exploziv de acțiune frenetică, comedie absurdă și elemente oculte. Stilul vizual este unul energic, cu linii groase și culori saturate care definesc haosul creativ al seriei.
+                    </p>
+                    <div class="flex items-center gap-4 text-xs font-cyber text-pink-500">
+                        <span>#ACȚIUNE</span> <span>#COMEDIE</span> <span>#ALIENS</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call of the Night -->
+            <div class="anime-card glass">
+                <div class="relative h-[450px]">
+                    <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Call of the Night vibe">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#05050a] via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <span class="bg-blue-600 text-white text-[10px] px-3 py-1 font-cyber uppercase mb-2 inline-block">Nocturn</span>
+                        <h4 class="text-3xl font-header font-bold text-white">Call of the Night</h4>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        O scrisoare de dragoste către estetica vieții de noapte. Tonurile de mov și albastru neon creează o atmosferă melancolică și hipnotică, explorând libertatea oferită de întuneric.
+                    </p>
+                    <div class="flex items-center gap-4 text-xs font-cyber text-blue-400">
+                        <span>#VAMPIRI</span> <span>#NEON</span> <span>#MELANCOLIE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spirited Away -->
+            <div class="anime-card glass rounded-tl-[50px] rounded-br-[50px]">
+                <div class="relative h-[450px]">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Spirited Away vibe">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <span class="bg-gold text-black text-[10px] px-3 py-1 font-cyber uppercase mb-2 inline-block font-bold">Clasic</span>
+                        <h4 class="text-3xl font-header font-bold text-white">Spirited Away</h4>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        Capodopera Studio Ghibli care îmbină fantezia tradițională cu aventura spirituală. Un festin vizual al naturii și al creaturilor magice, creat cu o atenție legendară la detalii.
+                    </p>
+                    <div class="flex items-center gap-4 text-xs font-cyber text-gold">
+                        <span>#MAGIE</span> <span>#GHIBLI</span> <span>#AVENTURĂ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNEA 3: AUTORI -->
+    <section id="autori" class="py-24 bg-[#080810]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-header text-4xl font-bold mb-16 text-center text-glow-gold">Mina din spatele Artei</h2>
+            
+            <div class="space-y-24">
+                <!-- Yukinobu Tatsu -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 group">
+                    <div class="w-full lg:w-1/3 aspect-square glass p-4 rounded-full">
+                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-pink-500">
+                            <img src="https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover grayscale transition duration-500 group-hover:grayscale-0" alt="Yukinobu Tatsu profile vibe">
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <h3 class="font-header text-4xl font-bold text-pink-500 mb-2">Yukinobu Tatsu</h3>
+                        <p class="font-cyber text-xs text-gray-500 mb-6 tracking-widest uppercase">Creatorul „Dan Da Dan”</p>
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                            Fost asistent al lui Tatsuki Fujimoto (Chainsaw Man), Tatsu a dezvoltat un stil incredibil de dinamic. Abilitatea sa de a desena pagini duble extrem de detaliate în timp ce menține un ritm comic alert l-a propulsat rapid în topul noii generații de mangaka.
+                        </p>
+                        <div class="flex gap-4">
+                            <div class="px-4 py-2 border border-white/10 text-xs font-cyber">STIL: DINAMIC</div>
+                            <div class="px-4 py-2 border border-white/10 text-xs font-cyber">GEN: SUPRANATURAL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kotoyama -->
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-12 group text-right">
+                    <div class="w-full lg:w-1/3 aspect-square glass p-4 rounded-full">
+                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-blue-500">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover grayscale transition duration-500 group-hover:grayscale-0" alt="Kotoyama profile vibe">
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <h3 class="font-header text-4xl font-bold text-blue-400 mb-2">Kotoyama</h3>
+                        <p class="font-cyber text-xs text-gray-500 mb-6 tracking-widest uppercase">Autorul „Call of the Night”</p>
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                            Kotoyama este un maestru al atmosferei. Stilul său se concentrează pe expresivitatea ochilor și pe designul minimalist al personajelor, reușind să captureze esența izolării urbane și a fascinației nocturne prin linii curate și fundaluri evocative.
+                        </p>
+                        <div class="flex gap-4 justify-end">
+                            <div class="px-4 py-2 border border-white/10 text-xs font-cyber">STIL: ATMOSFERIC</div>
+                            <div class="px-4 py-2 border border-white/10 text-xs font-cyber">FOCUS: EMOȚIE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hayao Miyazaki -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 group">
+                    <div class="w-full lg:w-1/3 aspect-square glass p-4 rounded-full">
+                        <div class="w-full h-full rounded-full overflow-hidden border-2 border-gold">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400" class="w-full h-full object-cover grayscale transition duration-500 group-hover:grayscale-0" alt="Hayao Miyazaki profile vibe">
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <h3 class="font-header text-4xl font-bold text-gold mb-2">Hayao Miyazaki</h3>
+                        <p class="font-cyber text-xs text-gray-500 mb-6 tracking-widest uppercase">Co-fondator Studio Ghibli</p>
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                            Legenda vie a animației mondiale, Miyazaki a redefinit modul în care poveștile sunt spuse prin imagine. În „Spirited Away”, simbolismul său profund și dragostea pentru natură se împletesc într-o estetică atemporală care continuă să inspire milioane de artiști.
+                        </p>
+                        <div class="flex gap-4">
+                            <div class="px-4 py-2 border border-white/10 text-xs font-cyber">STIL: PICTORAL</div>
+                            <div class="px-4 py-2 border border-white/10 text-xs font-cyber">TEME: NATURĂ & SPIRIT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNEA 4: GALERIE MASONRY -->
+    <section id="galerie" class="py-24 px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-header text-5xl font-bold mb-4">Viziuni Vizuale</h2>
+            <div class="h-1 w-24 bg-blue-500 mx-auto"></div>
+        </div>
+
+        <div class="gallery-grid max-w-7xl mx-auto">
+            <!-- Dan Da Dan vibe -->
+            <div class="gallery-item overflow-hidden glass group">
+                <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Dan Da Dan scene vibe">
+                <div class="absolute inset-0 bg-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <!-- Call of the Night vibe -->
+            <div class="gallery-item overflow-hidden glass group">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8bef99c02?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Call of the Night night city vibe">
+                <div class="absolute inset-0 bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <!-- Spirited Away vibe -->
+            <div class="gallery-item overflow-hidden glass group">
+                <img src="https://images.unsplash.com/photo-1516233501160-35ce13f4639f?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Spirited Away forest vibe">
+                <div class="absolute inset-0 bg-yellow-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+            <!-- Call of the Night vibe 2 -->
+            <div class="gallery-item overflow-hidden glass group">
+                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Nocturnal vibe">
+            </div>
+            <!-- Spirited Away vibe 2 -->
+            <div class="gallery-item overflow-hidden glass group">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Ghibli-esque bathhouse vibe">
+            </div>
+            <!-- Dan Da Dan vibe 2 -->
+            <div class="gallery-item overflow-hidden glass group">
+                <img src="https://images.unsplash.com/photo-1558478551-1a378f63328e?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Action lines vibe">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNEA 5: CONTACT -->
+    <section id="contact" class="py-24 bg-cyber-gradient relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-pink-500 via-blue-500 to-gold"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="glass p-12 rounded-[40px] border border-white/20">
+                <h2 class="font-header text-4xl font-bold mb-8 text-center italic">Conectează-te cu Universul</h2>
+                
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Mesaj trimis în dimensiunea corectă!');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-cyber text-[10px] uppercase text-gray-500 mb-2">Nume / Pseudonim</label>
+                            <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 text-white transition" placeholder="ex: Akutagawa" required>
+                        </div>
+                        <div>
+                            <label class="block font-cyber text-[10px] uppercase text-gray-500 mb-2">Email</label>
+                            <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 text-white transition" placeholder="contact@anime.ro" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block font-cyber text-[10px] uppercase text-gray-500 mb-2">Mesajul tău</label>
+                        <textarea class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 text-white transition h-32" placeholder="Ce alte universuri ar trebui să explorăm?" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-white text-black font-cyber font-bold uppercase tracking-[0.2em] hover:bg-gold transition-all rounded-xl">Trimite în Neant</button>
+                </form>
+
+                <div class="mt-12 flex justify-center gap-10">
+                    <a href="#" class="text-2xl hover:text-blue-400 transition transform hover:scale-125">𝕏</a>
+                    <a href="#" class="text-2xl hover:text-pink-500 transition transform hover:scale-125">📸</a>
+                    <a href="#" class="text-2xl hover:text-blue-500 transition transform hover:scale-125">💬</a>
+                    <a href="#" class="text-2xl hover:text-red-500 transition transform hover:scale-125">📺</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/5 text-center">
+        <div class="font-cyber text-[10px] text-gray-600 tracking-[0.5em] mb-6 uppercase">
+            Designed for the Otaku Generation
+        </div>
+        <div class="flex justify-center gap-8 text-xs text-gray-500 mb-8">
+            <a href="#" class="hover:text-white transition">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition">Terms of Service</a>
+            <a href="#" class="hover:text-white transition">Newsletter</a>
+        </div>
+        <div class="opacity-30">
+            <span class="font-cyber font-bold">© 2026 ANIMEVERSE. TOATE DREPTURILE REZERVATE.</span>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll implementation fix for ID links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
